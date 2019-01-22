@@ -73,9 +73,9 @@ public class MusicGen {
         String filePath = context.getExternalFilesDir(null).getPath().toString() + "/music.html";
         File f = new File(filePath);
         PrintWriter file = new PrintWriter(f);
-        file.print("<HTML><HEAD><LINK HREF='https://firebasestorage.googleapis.com/v0/b/onlinequiz-5a0f2.appspot.com/o/abc_midi.css?alt=media&token=5de7705e-edb6-4aea-a937-3c69f970d410' REL='stylesheet'><STYLE>svg{display:block;margin:auto;}</STYLE></HEAD><BODY><BUTTON ID='BTN' STYLE='BACKGROUND:#00A86B; WIDTH:100%; BORDER-RADIUS:10PX; FONT-SIZE:3EM; COLOR:WHITE;' ONCLICK='midi(this)'>PLAYBACK</BUTTON><DIV ID='m'></DIV>  <DIV ID='p'></DIV><PRE STYLE='display:none;'>");
+        file.print("<HTML><HEAD><LINK HREF='https://firebasestorage.googleapis.com/v0/b/onlinequiz-5a0f2.appspot.com/o/abc_midi.css?alt=media&token=5de7705e-edb6-4aea-a937-3c69f970d410' REL='stylesheet'><STYLE>svg{display:block;margin:auto;}</STYLE></HEAD><BODY><BUTTON ID='btn' STYLE='BACKGROUND:#00A86B; WIDTH:100%; BORDER-RADIUS:10PX; FONT-SIZE:3EM; COLOR:WHITE;' ONCLICK='midi(this)'>PLAYBACK</BUTTON><DIV ID='m'></DIV>  <DIV ID='p'></DIV><PRE STYLE='display:none;'>");
         file.print(piece.getABCValue());
-        file.print("</PRE><SCRIPT SRC='https://firebasestorage.googleapis.com/v0/b/onlinequiz-5a0f2.appspot.com/o/abc_midi.js?alt=media&token=fd1397dd-be18-4c5c-8f48-777f574cb660'></SCRIPT><SCRIPT>var abc=document.getElementsByTagName('pre')[0].innerHTML.trim();ABCJS.renderAbc('p', abc);function midi(div){div.innerHTML=ABCJS.renderMidi('m',abc);document.getElementById(\"BTN\").style.display=\"none\";}</SCRIPT></BODY></HTML>");
+        file.print("</PRE><SCRIPT SRC='https://firebasestorage.googleapis.com/v0/b/onlinequiz-5a0f2.appspot.com/o/abc_midi.js?alt=media&token=fd1397dd-be18-4c5c-8f48-777f574cb660'></SCRIPT><SCRIPT>var abc=document.getElementsByTagName('pre')[0].innerHTML.trim();ABCJS.renderAbc('p', abc);function midi(div){div.innerHTML=ABCJS.renderMidi('m',abc);document.getElementById(\"btn\").style.display=\"none\";}</SCRIPT></BODY></HTML>");
         file.close();
 
 
