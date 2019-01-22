@@ -99,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void signIn(final String email, final String password) {
-        Log.d(TAG, "signIn:" + email);
         if (!validateForm(2)) {
             return;
         }
@@ -110,7 +109,6 @@ public class MainActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             closeKeyboard();
-                            Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             users.orderByChild("email").equalTo(user.getEmail()).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
@@ -118,10 +116,6 @@ public class MainActivity extends AppCompatActivity {
                                     for(DataSnapshot data:dataSnapshot.getChildren())
                                     {
                                         Intent homeActivity = new Intent(MainActivity.this, Home.class);
-                                        Log.d("Current User 1 : ", (data.toString()));
-//                                        Log.d("Current User 1 : ", (data.getChildren().getClass().getName()));
-//                                        Log.d("Already Current User: ", Common.currentUser.toString());
-//                                        Log.d("Current User 2 : ", (data.getValue(User.class).getSavedLinks()).toString());
                                         Common.currentUser = data.getValue(User.class);
                                         startActivity(homeActivity);
                                         finish();
@@ -185,7 +179,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 final Boolean[] wantToCloseDialog = {false};
-                Log.d(TAG, "createAccount:" + edtNewEmail.getText().toString());
                 if(!validateForm(3)) {
                     wantToCloseDialog[0] = false;
                 }
@@ -200,7 +193,6 @@ public class MainActivity extends AppCompatActivity {
                                 //closeKeyboard();
                                 edtNewUsername.setError("Username already exists.");
                                 wantToCloseDialog[0] = false;
-                                //Toast.makeText(MainActivity.this, "User already exists!", Toast.LENGTH_SHORT).show();
                             } else {
                                 users.child(user.getUsername()).setValue(user);
                                 mAuth.createUserWithEmailAndPassword(edtNewEmail.getText().toString(), edtNewPassword.getText().toString())
@@ -209,7 +201,6 @@ public class MainActivity extends AppCompatActivity {
                                             public void onComplete(@NonNull Task<AuthResult> task) {
                                                 if (task.isSuccessful()) {
                                                     // Sign in success, update UI with the signed-in user's information
-                                                    Log.d(TAG, "createUserWithEmail:success");
                                                     FirebaseUser user = mAuth.getCurrentUser();
                                                     closeKeyboard();
                                                     dialog.dismiss();
@@ -221,7 +212,6 @@ public class MainActivity extends AppCompatActivity {
                                                     if(task.getException().getMessage().toLowerCase().indexOf("Password".toLowerCase()) != -1) {
                                                         edtNewPassword.setError(task.getException().getMessage());
                                                     }
-                                                    Log.w(TAG, "createUserWithEmail:failure", task.getException());
 //                                                    edtNewEmail.setError("Email already registered!");
                                                     wantToCloseDialog[0] = false;
                                                     closeKeyboard();

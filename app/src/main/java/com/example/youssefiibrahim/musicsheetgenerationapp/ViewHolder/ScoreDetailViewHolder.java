@@ -10,6 +10,7 @@ import com.example.youssefiibrahim.musicsheetgenerationapp.R;
 public class ScoreDetailViewHolder extends RecyclerView.ViewHolder {
 
     public TextView txt_name, txt_score;
+
     public ScoreDetailViewHolder(@NonNull View itemView) {
         super(itemView);
 
