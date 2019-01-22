@@ -79,18 +79,17 @@ public class PracticeFragment extends Fragment {
             View viewer = parent.findViewById(R.id.navigation);
             viewer.getContext();
             BottomNavigationView bnv = (BottomNavigationView) viewer;
-            if(e1 == null || e2 == null) return false;
-            if(e1.getPointerCount() > 1 || e2.getPointerCount() > 1) return false;
+            if (e1 == null || e2 == null) return false;
+            if (e1.getPointerCount() > 1 || e2.getPointerCount() > 1) return false;
             else {
                 try {
-                    if(e1.getY() - e2.getY() > 20 ) {
+                    if (e1.getY() - e2.getY() > 20) {
                         // Hide Actionbar
 
                         bnv.setVisibility(View.GONE);//.hide();
 //                        view.invalidate();
                         return false;
-                    }
-                    else if (e2.getY() - e1.getY() > 20 ) {
+                    } else if (e2.getY() - e1.getY() > 20) {
                         // Show Actionbar
                         bnv.setVisibility(View.VISIBLE);
 //                        view.invalidate();
@@ -130,7 +129,7 @@ public class PracticeFragment extends Fragment {
             public void onClick(View v) {
                 storageRef = FirebaseStorage.getInstance().getReference();
                 Uri file = Uri.fromFile(new File("/storage/emulated/0/Android/data/com.example.youssefiibrahim.musicsheetgenerationapp/files/music.html"));
-                final StorageReference riversRef = storageRef.child(Common.currentUser.getUsername()+"/music_"+ getId() + "_" + current_category + "_" + getRandomId() + ".html");
+                final StorageReference riversRef = storageRef.child(Common.currentUser.getUsername() + "/music_" + getId() + "_" + current_category + "_" + getRandomId() + ".html");
 
                 UploadTask uploadTask = riversRef.putFile(file);
 
@@ -167,7 +166,7 @@ public class PracticeFragment extends Fragment {
     }
 
     @Override
-    public void onConfigurationChanged(Configuration newConfig){
+    public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
     }
 
@@ -321,9 +320,9 @@ public class PracticeFragment extends Fragment {
         view.getSettings().setBuiltInZoomControls(true);
         view.getSettings().setLoadWithOverviewMode(true);
         view.getSettings().setUseWideViewPort(true);
-        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
-            Log.d("ERROR LOADING JS.TAG ","SDk version above android L so forcibaly enabling ThirdPartyCookies");
-            CookieManager.getInstance().setAcceptThirdPartyCookies(view,false);
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
+            Log.d("ERROR LOADING JS.TAG ", "SDk version above android L so forcibaly enabling ThirdPartyCookies");
+            CookieManager.getInstance().setAcceptThirdPartyCookies(view, false);
         }
         view.loadUrl("file:///" +
                 "/storage/emulated/0/Android/data/com.example.youssefiibrahim.musicsheetgenerationapp/files/music.html");

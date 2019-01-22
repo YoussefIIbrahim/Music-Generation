@@ -61,7 +61,7 @@ public class RankingFragment extends Fragment {
         myFragment = inflater.inflate(R.layout.fragment_ranking, container, false);
 
         // Init View
-        recyclerView = (RecyclerView)myFragment.findViewById(R.id.rankingList);
+        recyclerView = (RecyclerView) myFragment.findViewById(R.id.rankingList);
         linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setHasFixedSize(true);
         //Since OrderByChild method sorts lists ascendingly
@@ -81,7 +81,7 @@ public class RankingFragment extends Fragment {
         });
 
         //Adapter
-        adapter  = new FirebaseRecyclerAdapter<Ranking, RankingViewHolder>(
+        adapter = new FirebaseRecyclerAdapter<Ranking, RankingViewHolder>(
                 Ranking.class,
                 R.layout.layout_ranking,
                 RankingViewHolder.class,
@@ -115,10 +115,9 @@ public class RankingFragment extends Fragment {
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for(DataSnapshot data:dataSnapshot.getChildren())
-                        {
+                        for (DataSnapshot data : dataSnapshot.getChildren()) {
                             QuestionScore question_score = data.getValue(QuestionScore.class);
-                            sum +=Integer.parseInt(question_score.getScore());
+                            sum += Integer.parseInt(question_score.getScore());
                         }
                         // After summing all score, process sum variable here
                         // since Firebase is async, and prcossing outside this scope

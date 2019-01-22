@@ -23,14 +23,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 
-
 public class CategoryFragment extends Fragment {
 
     View myFragment;
 
     RecyclerView listCategory;
     RecyclerView.LayoutManager layoutManager;
-    FirebaseRecyclerAdapter<Category,CategoryViewHolder> adapter;
+    FirebaseRecyclerAdapter<Category, CategoryViewHolder> adapter;
     FirebaseDatabase database;
     DatabaseReference categories;
 
@@ -57,7 +56,7 @@ public class CategoryFragment extends Fragment {
         listCategory.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(container.getContext());
         listCategory.setLayoutManager(layoutManager);
-        
+
         loadCategories();
         return myFragment;
     }

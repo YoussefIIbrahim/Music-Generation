@@ -25,6 +25,7 @@ public class Start extends AppCompatActivity {
 
     FirebaseDatabase database;
     DatabaseReference questions;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +51,7 @@ public class Start extends AppCompatActivity {
     private void loadQuestion(String categoryId) {
 
         // Clear common list
-        if(Common.questionList.size()>0)
+        if (Common.questionList.size() > 0)
             Common.questionList.clear();
 
         questions.orderByChild("CategoryId").equalTo(categoryId)
@@ -58,8 +59,7 @@ public class Start extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         Log.w("ERROR: ", "Category ID");
-                        for (DataSnapshot postSnapshot : dataSnapshot.getChildren())
-                        {
+                        for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                             Question question = postSnapshot.getValue(Question.class);
                             Common.questionList.add(question);
                         }

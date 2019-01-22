@@ -21,6 +21,7 @@ public class ScoreDetail extends AppCompatActivity {
     RecyclerView.LayoutManager layoutManager;
     FirebaseRecyclerAdapter<QuestionScore, ScoreDetailViewHolder> adapter;
     String viewUser = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,9 +37,9 @@ public class ScoreDetail extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        if(getIntent() != null)
+        if (getIntent() != null)
             viewUser = getIntent().getStringExtra("viewUser");
-        if(!viewUser.isEmpty())
+        if (!viewUser.isEmpty())
             loadScoreDetail(viewUser);
     }
 

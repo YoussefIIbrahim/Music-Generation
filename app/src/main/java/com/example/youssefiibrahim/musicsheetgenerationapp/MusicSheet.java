@@ -20,7 +20,7 @@ public class MusicSheet extends AppCompatActivity {
         view.getSettings().setLoadWithOverviewMode(true);
         view.getSettings().setUseWideViewPort(true);
         view.loadUrl("file:///" +
-                getApplicationContext().getFilesDir().getAbsolutePath()+"/");
+                getApplicationContext().getFilesDir().getAbsolutePath() + "/");
         System.out.print(view.getUrl());
         Toast.makeText(getApplication().getBaseContext(), view.getUrl().toString(), Toast.LENGTH_SHORT).show();
         view.setWebViewClient(new MyBrowser());

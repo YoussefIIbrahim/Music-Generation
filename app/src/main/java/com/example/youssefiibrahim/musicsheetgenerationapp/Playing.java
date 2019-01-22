@@ -18,7 +18,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Playing extends AppCompatActivity implements View.OnClickListener{
+public class Playing extends AppCompatActivity implements View.OnClickListener {
 
     final static long INTERVAL = 1000;  // 1 sec
     final static long TIMEOUT = 30000;   // 7 secs
@@ -26,7 +26,7 @@ public class Playing extends AppCompatActivity implements View.OnClickListener{
 
     CountDownTimer countDownTimer;
 
-    int index=0, score=0, thisQuestion=0, totalQuestion, correctAnswer;
+    int index = 0, score = 0, thisQuestion = 0, totalQuestion, correctAnswer;
 
     ProgressBar progressBar;
     ImageView question_image;
@@ -45,12 +45,12 @@ public class Playing extends AppCompatActivity implements View.OnClickListener{
         question_image = (ImageView) findViewById(R.id.question_image);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
-        choices.add((Button)findViewById(R.id.btnAnswerA));
-        choices.add((Button)findViewById(R.id.btnAnswerB));
-        choices.add((Button)findViewById(R.id.btnAnswerC));
-        choices.add((Button)findViewById(R.id.btnAnswerD));
+        choices.add((Button) findViewById(R.id.btnAnswerA));
+        choices.add((Button) findViewById(R.id.btnAnswerB));
+        choices.add((Button) findViewById(R.id.btnAnswerC));
+        choices.add((Button) findViewById(R.id.btnAnswerD));
 
-        for (int i=0; i<choices.size(); i++){
+        for (int i = 0; i < choices.size(); i++) {
             choices.get(i).setOnClickListener(this);
         }
 
@@ -59,17 +59,15 @@ public class Playing extends AppCompatActivity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         countDownTimer.cancel();
-        if(index < totalQuestion) //still have questions left
+        if (index < totalQuestion) //still have questions left
         {
-            Button clickedButton = (Button)v;
-            if(clickedButton.getText().equals(Common.questionList.get(index).getCorrectAnswer()))
-            {
+            Button clickedButton = (Button) v;
+            if (clickedButton.getText().equals(Common.questionList.get(index).getCorrectAnswer())) {
                 //Change correct answer
                 score += 10;
-                correctAnswer ++;
+                correctAnswer++;
                 showQuestion(++index); //next question
-            }
-            else {
+            } else {
 //                //Chose wrong answer
 //                Intent intent = new Intent(this, Done.class);
 //                Bundle dataSend = new Bundle();
@@ -87,33 +85,29 @@ public class Playing extends AppCompatActivity implements View.OnClickListener{
     }
 
     private void showQuestion(int index) {
-        if(index < totalQuestion)
-        {
+        if (index < totalQuestion) {
             thisQuestion++;
             txtQuestionNum.setText(String.format("%d / %d", thisQuestion, totalQuestion));
             progressBar.setProgress(0);
-            progressValue=0;
-            if(Common.questionList.get(index).getIsImageQuestion().equals("true"))
-            {
+            progressValue = 0;
+            if (Common.questionList.get(index).getIsImageQuestion().equals("true")) {
                 //If it's in image
                 Picasso.get()
                         .load(Common.questionList.get(index).getQuestion())
                         .into(question_image);
                 question_image.setVisibility(View.VISIBLE);
                 question_text.setVisibility(View.INVISIBLE);
-            }
-            else {
+            } else {
                 question_text.setText(Common.questionList.get(index).getQuestion());
                 question_image.setVisibility(View.INVISIBLE);
                 question_text.setVisibility(View.VISIBLE);
             }
 
-            for (int j=0; j<Common.questionList.get(index).getAnswers().size(); j++){
+            for (int j = 0; j < Common.questionList.get(index).getAnswers().size(); j++) {
                 choices.get(j).setText(Common.questionList.get(index).getAnswers().get(j));
             }
             countDownTimer.start();
-        }
-        else {
+        } else {
             //If it is final question
             Intent intent = new Intent(this, Done.class);
             Bundle dataSend = new Bundle();

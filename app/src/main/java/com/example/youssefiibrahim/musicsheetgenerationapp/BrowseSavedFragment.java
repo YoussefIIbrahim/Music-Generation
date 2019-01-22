@@ -54,7 +54,7 @@ public class BrowseSavedFragment extends Fragment {
         Activity frag = getActivity();
         System.out.print(frag.toString());
         ListView listLayout = (ListView) getActivity().findViewById(R.id.list_notes);
-        if(listNotes.size()>0) {
+        if (listNotes.size() > 0) {
             ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                     getActivity(),
                     R.layout.music_list,
@@ -73,9 +73,8 @@ public class BrowseSavedFragment extends Fragment {
     }
 
 
-
     private void loadNotes() {
-        if(Common.currentUser.getSavedLinks()!=null) {
+        if (Common.currentUser.getSavedLinks() != null) {
             int size = Common.currentUser.getSavedLinks().size();
             if (size != 0) {
                 for (int i = 0; i < size; i++) {

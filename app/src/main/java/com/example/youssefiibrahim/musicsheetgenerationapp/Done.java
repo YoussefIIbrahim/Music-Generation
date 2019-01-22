@@ -49,8 +49,7 @@ public class Done extends AppCompatActivity {
 
         //Get data from bundle and set to view
         Bundle extra = getIntent().getExtras();
-        if(extra != null)
-        {
+        if (extra != null) {
             int score = extra.getInt("SCORE");
             int totalQuestion = extra.getInt("TOTAL");
             int correctAnswer = extra.getInt("CORRECT");
@@ -63,7 +62,7 @@ public class Done extends AppCompatActivity {
 
             //Upload point to DB
             question_score.child(String.format("%s_%s", Common.currentUser.getUsername(),
-                                                        Common.categoryId))
+                    Common.categoryId))
                     .setValue(new QuestionScore(String.format("%s_%s", Common.currentUser.getUsername(),
                             Common.categoryId),
                             Common.currentUser.getUsername(),

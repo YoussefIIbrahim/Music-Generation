@@ -18,7 +18,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.youssefiibrahim.musicsheetgenerationapp.BroadcastReceiver.AlarmReceiver;
 import com.example.youssefiibrahim.musicsheetgenerationapp.Common.Common;
 import com.example.youssefiibrahim.musicsheetgenerationapp.Common.MyFocusChangeListener;
 import com.example.youssefiibrahim.musicsheetgenerationapp.Model.User;
@@ -58,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
-        registerAlarm();
 
         //Firebase
         database = FirebaseDatabase.getInstance();
@@ -99,18 +97,6 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
     }
 
-    private void registerAlarm() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, 1); //Hour 9
-        calendar.set(Calendar.MINUTE, 29); //Minute 40
-        calendar.set(Calendar.SECOND, 0);
-
-        Intent intent = new Intent(MainActivity.this, AlarmReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        AlarmManager am = (AlarmManager)this.getSystemService(this.ALARM_SERVICE);
-        am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
-
-    }
 
     private void signIn(final String email, final String password) {
         Log.d(TAG, "signIn:" + email);

@@ -28,24 +28,20 @@ import java.util.Random;
 public class Home extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
-
-//        CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) BottomNavigationView.getLayoutParams();
-//        layoutParams.setBehavior(new BottomNavigationViewBehavior());
-
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
                 Fragment selectedFragment = null;
-                switch (menuItem.getItemId())
-                {
+                switch (menuItem.getItemId()) {
                     case R.id.action_category:
                         selectedFragment = CategoryFragment.newInstance();
                         break;
@@ -60,7 +56,7 @@ public class Home extends AppCompatActivity {
                         break;
                 }
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout,selectedFragment);
+                transaction.replace(R.id.frame_layout, selectedFragment);
                 transaction.commit();
                 return true;
             }
@@ -75,7 +71,7 @@ public class Home extends AppCompatActivity {
 
     private void setDefultFragment() {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_layout,CategoryFragment.newInstance());
+        transaction.replace(R.id.frame_layout, CategoryFragment.newInstance());
         transaction.commit();
     }
 }
