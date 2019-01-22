@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".MusicSheet">
+
+
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:id="@+id/buttons"
+        android:layout_margin="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <Button
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:id="@+id/saveSheet"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="Save"
+            android:textSize="15sp"
+            android:layout_alignParentRight="true"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:theme="@style/MyButton"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"/>
+
+    </RelativeLayout>
+
+    <!--<WebView-->
+        <!--android:id="@+id/webView"-->
+        <!--android:layout_below="@+id/buttons"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_centerInParent="true" />-->
+
+    <com.example.youssefiibrahim.musicsheetgenerationapp.Common.CustomWebView
+        android:id="@+id/webView"
+        android:layout_below="@+id/buttons"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true" />
+
+
+
+</RelativeLayout>

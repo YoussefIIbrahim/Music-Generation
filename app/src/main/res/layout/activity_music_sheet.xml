@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MusicSheet">
+
+
+    <WebView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/webView" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_margin="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:id="@+id/save"
+            android:layout_margin="8dp"
+            android:background="@color/colorAccent"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="Go Back"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:theme="@style/MyButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:id="@+id/goBack"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="Save This Sheet"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:theme="@style/MyButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>

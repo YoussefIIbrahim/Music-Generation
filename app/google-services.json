@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "865278987241",
+    "firebase_url": "https://onlinequiz-5a0f2.firebaseio.com",
+    "project_id": "onlinequiz-5a0f2",
+    "storage_bucket": "onlinequiz-5a0f2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:865278987241:android:74a0347ac7b001a0",
+        "android_client_info": {
+          "package_name": "com.example.youssefiibrahim.musicsheetgenerationapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "865278987241-f4lla1vifo75v1if6fv2v87qoitrcg6l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.youssefiibrahim.musicsheetgenerationapp",
+            "certificate_hash": "f7fe185903118168b74cb0d08405da7dfc1a423a"
+          }
+        },
+        {
+          "client_id": "865278987241-7m7j3057qb712jdtg4oj2qh1b87m6j8n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcvq81rx3bTLwfcETy26ItvGUQbwalHFE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "865278987241-7m7j3057qb712jdtg4oj2qh1b87m6j8n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
