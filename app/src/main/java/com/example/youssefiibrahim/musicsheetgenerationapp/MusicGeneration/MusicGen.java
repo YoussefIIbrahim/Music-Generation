@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class MusicGen {
 
 
-	public void generateMusic(String category, Context context) {
+    public void generateMusic(String category, Context context) {
         //Here goes the argument!
         Piece piece = new Piece(category);
         try {
@@ -24,35 +24,35 @@ public class MusicGen {
         } catch (IOException e) {
             e.printStackTrace();
         }
-	}
+    }
 
     public static void generateMIDI(Piece piece, Context context) throws IOException {
         FileOutputStream file = new FileOutputStream("music.mid");
-        byte header[] = {0x4d, 0x54, 0x68, 0x64, 0x00, 0x00, 0x00, 0x06, 0x00, 0x01, 0x00, 0x02, 0x01, (byte)0xe0};
+        byte header[] = {0x4d, 0x54, 0x68, 0x64, 0x00, 0x00, 0x00, 0x06, 0x00, 0x01, 0x00, 0x02, 0x01, (byte) 0xe0};
         file.write(header);
         byte trackHeader[] = {0x4d, 0x54, 0x72, 0x6b};
         file.write(trackHeader);
-        file.write(intToByteArray(piece.getTrebleLength()+25,4));
-        byte time44[] = {0x00, (byte)0xff, 0x58, 0x04, 0x04, 0x02, 0x18, 0x08};
+        file.write(intToByteArray(piece.getTrebleLength() + 25, 4));
+        byte time44[] = {0x00, (byte) 0xff, 0x58, 0x04, 0x04, 0x02, 0x18, 0x08};
         file.write(time44);
-        byte cMaj[] = {0x00, (byte)0xff, 0x59, 0x02, 0x00, 0x00};
+        byte cMaj[] = {0x00, (byte) 0xff, 0x59, 0x02, 0x00, 0x00};
         file.write(cMaj);
-        byte tempo[] = {0x00, (byte)0xff, 0x51, 0x03};
+        byte tempo[] = {0x00, (byte) 0xff, 0x51, 0x03};
         file.write(tempo);
-        file.write(intToByteArray(1000000/piece.getTempo()*60,3));
+        file.write(intToByteArray(1000000 / piece.getTempo() * 60, 3));
 
         ArrayList<Byte> track1 = piece.trebleToByteArray();
-        for(byte b : track1)
+        for (byte b : track1)
             file.write(b);
 
-        byte endTrack[] = {0x01, (byte)0xff, 0x2f, 0x00};
+        byte endTrack[] = {0x01, (byte) 0xff, 0x2f, 0x00};
         file.write(endTrack);
 
         file.write(trackHeader);
-        file.write(intToByteArray(piece.getBassLength()+4, 4));
+        file.write(intToByteArray(piece.getBassLength() + 4, 4));
 
         ArrayList<Byte> track2 = piece.bassToByteArray();
-        for(byte b : track2)
+        for (byte b : track2)
             file.write(b);
 
         file.write(endTrack);
@@ -62,12 +62,12 @@ public class MusicGen {
 
     public static byte[] intToByteArray(int num, int n) {
         byte arr[] = new byte[n];
-        for(int i = 0; i < n; i++)
-            arr[n-1-i] = (byte) (num >>> (i * 8));
+        for (int i = 0; i < n; i++)
+            arr[n - 1 - i] = (byte) (num >>> (i * 8));
         return arr;
     }
-	
-	public void generateHTML(Piece piece, Context context) throws IOException {
+
+    public void generateHTML(Piece piece, Context context) throws IOException {
 
 
         String filePath = context.getExternalFilesDir(null).getPath().toString() + "/music.html";
@@ -79,8 +79,6 @@ public class MusicGen {
         file.close();
 
 
-
-
 //        PrintWriter file = new PrintWriter(f);
 //        file.print("<HTML><HEAD><STYLE>svg{display:block;margin:auto;}</STYLE></HEAD><BODY><DIV ID='p'></DIV><PRE STYLE='display:none;'>");
 //        file.print(piece.getABCValue());
@@ -88,6 +86,6 @@ public class MusicGen {
 //        file.close();
 
 
-	}
-		
+    }
+
 }
